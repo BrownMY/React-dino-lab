@@ -9,28 +9,28 @@ class App extends Component {
     body: "Check out this body property",
     comments: ["First!", "Great post", "Hire this author now!"]
   }
+  //method will update body state
+  changeBody = ()=> {
+    const userInput = prompt('give a new body')
+    //update body state
+    this.setState({ body: userInput })
+  }
+
   render() {
-    const post = {
-      title: "Dinosaurs are awesome",
-      author: "Stealthy Stegosaurus",
-      body: "Check out this body property",
-      comments: ["First!", "Great post", "Hire this author now!"]
-    };
     //map returns an array
-    const comments = post.comments.map(comment => (<Comment text={comment} />))
+    const comments = this.state.comments.map(comment => (<Comment text={comment} />))
 
 
     return (
       <div className="App">
         {/* Use curly brackets to access variables */}
         <h1>{this.state.title}</h1>
-        <p>{post.author}</p>
-        <p>{post.body}</p>
+        <p>{this.state.author}</p>
+        <p>{this.state.body}</p>
         <h3>Comments:</h3>
-        <p>{post.comments[0]}</p>
-
-        { comments}
-      //name and store variable before return statement
+    
+        { comments }
+        <button onClick={this.changeBody}>Change body</button>
       </div>
   
     );
